@@ -12,8 +12,7 @@ public class GameViewModel extends ViewModel {
 
     // used for the hardcoded view
     // public ObservableArrayMap<String, String> cells;
-
-    public ObservableArrayMap<Integer, String> cellss;
+    public ObservableArrayMap<Integer, String> cells;
 
     // PlayerScores available all game
     public ObservableField<Integer> player1Score = new ObservableField<>();
@@ -23,25 +22,22 @@ public class GameViewModel extends ViewModel {
     // used for the view to highlight the currentPlayer
     public ObservableField<String> currentPlayer = new ObservableField<>();
 
-    // to Notify the MainView of the winner
+    // to Notify the MainActivity of the new winner
     public LiveData<String> getWinner() {
         return game.winner;
     }
 
-
     private Game game;
-
     public Game getGame() {
         return game;
     }
-
     public int boardSize;
     public String player1, player2;
 
 
     public void startSession(int boardSize, String playerOne, String playerTwo) {
         player1 = playerOne;
-        player1 = playerTwo;
+        player2 = playerTwo;
         startGame(boardSize, playerOne, playerTwo);
         setInitialScore();
     }
@@ -50,7 +46,7 @@ public class GameViewModel extends ViewModel {
         game = new Game(boardSize, playerOne, playerTwo);
         this.boardSize = boardSize;
         // cells = new ObservableArrayMap<>();
-        cellss = new ObservableArrayMap<>();
+        cells = new ObservableArrayMap<>();
         currentPlayer.set(game.currentPlayer.getValue());
     }
 
@@ -62,14 +58,14 @@ public class GameViewModel extends ViewModel {
     }
 
     public void restartGame() {
-        cellss.clear();
+        cells.clear();
         game.resetGame();
     }
 
     public void cellSelected(int id, int row, int column) {
         if (game.board[row][column] == null) {
             game.board[row][column] = new Cell(game.currentPlayer);
-            cellss.put(id, game.currentPlayer.getValue());
+            cells.put(id, game.currentPlayer.getValue());
             // cells.put(stringFromNumbers(row, column), game.currentPlayer.getValue());
             if (game.gameEnded(row, column)) {
                 updateScores();
@@ -95,37 +91,4 @@ public class GameViewModel extends ViewModel {
             }
         }
     }
-/*
-Used for hardCoded view //TODO NEEDS REFACTORING
- */
-//public static String stringFromNumbers(int... numbers) {
-//    StringBuilder sNumbers = new StringBuilder();
-//    for (int number : numbers)
-//        sNumbers.append(number);
-//    return sNumbers.toString();
-//}
-//    public void cellSelected( int row, int column) {
-//        if (game.board[row][column] == null) {
-//            game.board[row][column] = new Cell(game.currentPlayer);
-//            cells.put(stringFromNumbers(row, column), game.currentPlayer.getValue());
-//            if (game.gameEnded(row, column)) {
-//                if (game.winner.getValue() != null) {
-//                    if (game.winner.getValue().equals(Game.PLAYER_ONE)) {
-//                        int val = player1Score.get();
-//                        player1Score.set(++(val));
-//                    } else if(game.winner.getValue().equals(Game.PLAYER_TWO)){
-//                        int val = player2Score.get();
-//                        player2Score.set(++(val));
-//                    }else{
-//                        int val = totalDraws.get();
-//                        totalDraws.set(++(val));
-//                    }
-//                }
-//                restartGame();
-//            } else {
-//                game.nextPlayer();
-//                currentPlayer.set(game.currentPlayer.getValue());
-//            }
-//        }
-//    }
 }
