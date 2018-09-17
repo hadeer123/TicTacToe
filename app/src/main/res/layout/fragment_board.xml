@@ -1,0 +1,103 @@
+<?xml version="1.0" encoding="utf-8"?>
+<layout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto">
+
+    <data>
+
+        <variable
+            name="gameViewModel"
+            type="com.example.android.tictactoe.viewModel.GameViewModel" />
+    </data>
+
+    <android.support.v7.widget.GridLayout
+        android:id="@+id/board"
+        android:layout_width="match_parent"
+        android:layout_height="match_parent"
+        android:layout_gravity="center"
+        android:layout_margin="10dp"
+        android:background="@drawable/border"
+        android:padding="32dp"
+        app:columnCount="@{gameViewModel.game.DEFAULT_BOARD_SIZE}"
+        app:columnOrderPreserved="true"
+        app:rowCount="@{gameViewModel.game.DEFAULT_BOARD_SIZE}"
+        app:rowOrderPreserved="true">
+        <!--<Button-->
+        <!--android:id="@+id/Button00"-->
+        <!--android:layout_width="wrap_content"-->
+        <!--android:layout_height="wrap_content"-->
+        <!--android:adjustViewBounds="false"-->
+        <!--android:contentDescription="TODO"-->
+        <!--android:onClick="@{() -> gameViewModel.cellSelected(0, 0)}"-->
+        <!--android:text='@{gameViewModel.cells["00"]}' />-->
+
+        <!--<Button-->
+        <!--android:id="@+id/Button01"-->
+        <!--android:layout_width="wrap_content"-->
+        <!--android:layout_height="wrap_content"-->
+        <!--android:adjustViewBounds="false"-->
+        <!--android:contentDescription="TODO"-->
+        <!--android:onClick="@{() -> gameViewModel.cellSelected(0, 1)}"-->
+        <!--android:text='@{gameViewModel.cells["01"]}' />-->
+
+        <!--<Button-->
+        <!--android:id="@+id/Button02"-->
+        <!--android:layout_width="wrap_content"-->
+        <!--android:layout_height="wrap_content"-->
+        <!--android:adjustViewBounds="false"-->
+        <!--android:contentDescription="TODO"-->
+        <!--android:onClick="@{() -> gameViewModel.cellSelected(0, 2)}"-->
+        <!--android:text='@{gameViewModel.cells["02"]}' />-->
+
+        <!--<Button-->
+        <!--android:id="@+id/Button10"-->
+        <!--android:layout_width="wrap_content"-->
+        <!--android:layout_height="wrap_content"-->
+        <!--android:adjustViewBounds="false"-->
+        <!--android:contentDescription="TODO"-->
+        <!--android:onClick="@{() -> gameViewModel.cellSelected(1, 0)}"-->
+        <!--android:text='@{gameViewModel.cells["10"]}' />-->
+
+        <!--<Button-->
+        <!--android:id="@+id/Button11"-->
+        <!--android:layout_width="wrap_content"-->
+        <!--android:layout_height="wrap_content"-->
+        <!--android:adjustViewBounds="false"-->
+        <!--android:contentDescription="TODO"-->
+        <!--android:onClick="@{() -> gameViewModel.cellSelected(1, 1)}"-->
+        <!--android:text='@{gameViewModel.cells["11"]}' />-->
+
+        <!--<Button-->
+        <!--android:id="@+id/Button12"-->
+        <!--android:layout_width="wrap_content"-->
+        <!--android:layout_height="wrap_content"-->
+        <!--android:adjustViewBounds="false"-->
+        <!--android:contentDescription="TODO"-->
+        <!--android:onClick="@{() -> gameViewModel.cellSelected(1, 2)}"-->
+        <!--android:text='@{gameViewModel.cells["12"]}' />-->
+
+        <!--<Button-->
+        <!--android:id="@+id/Button20"-->
+        <!--android:layout_width="wrap_content"-->
+        <!--android:layout_height="wrap_content"-->
+        <!--android:adjustViewBounds="false"-->
+        <!--android:contentDescription="TODO"-->
+        <!--android:onClick="@{() -> gameViewModel.cellSelected(2, 0)}"-->
+        <!--android:text='@{gameViewModel.cells["20"]}' />-->
+        <!--<Button-->
+        <!--android:id="@+id/Button21"-->
+        <!--android:layout_width="wrap_content"-->
+        <!--android:layout_height="wrap_content"-->
+        <!--android:adjustViewBounds="false"-->
+        <!--android:contentDescription="TODO"-->
+        <!--android:onClick="@{() -> gameViewModel.cellSelected(2, 1)}"-->
+        <!--android:text='@{gameViewModel.cells["21"]}' />-->
+        <!--<Button-->
+        <!--android:id="@+id/Button22"-->
+        <!--android:layout_width="wrap_content"-->
+        <!--android:layout_height="wrap_content"-->
+        <!--android:adjustViewBounds="false"-->
+        <!--android:contentDescription="TODO"-->
+        <!--android:onClick="@{() -> gameViewModel.cellSelected(2, 2)}"-->
+        <!--android:text='@{gameViewModel.cells["22"]}' />-->
+    </android.support.v7.widget.GridLayout>
+</layout>

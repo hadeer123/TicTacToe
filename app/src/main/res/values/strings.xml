@@ -1,3 +1,10 @@
 <resources>
     <string name="app_name">TicTacToe</string>
+    <string name="reset_game">reset</string>
+    <string name="board_view">board view</string>
+    <string name="playerx">playerX</string>
+    <string name="playero">playerO</string>
+    <string name="game_score">Game Score</string>
+    <string name="colon">:</string>
+    <string name="total_drawstxt">Total Draws :</string>
 </resources>
