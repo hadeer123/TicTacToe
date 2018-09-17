@@ -29,8 +29,6 @@ public class Game {
     public void resetGame(){
         board = new Cell[boardSize][boardSize];
         currentPlayer = player1;
-        winner.hasActiveObservers();
-        winner = new MutableLiveData<>();
     }
 
     public int getBoardSize () {return boardSize;}
