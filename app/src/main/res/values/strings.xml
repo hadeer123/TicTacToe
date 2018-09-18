@@ -1,5 +1,5 @@
 <resources>
-    <string name="app_name">TicTacToe</string>
+    <string name="app_name">TIC TAC TOE</string>
     <string name="reset_game">reset</string>
     <string name="board_view">board view</string>
     <string name="playerx">playerX</string>
@@ -7,7 +7,7 @@
     <string name="game_score">Game Score</string>
     <string name="colon">:</string>
     <string name="total_drawstxt">Total Draws :</string>
-    <string name="title_activity_game">GameActivity</string>
+    <string name="title_activity_game">TIC TAC TOE</string>
     <string name="startGame">Button</string>
     <string name="player_x">Player X</string>
     <string name="player_o">Player O</string>

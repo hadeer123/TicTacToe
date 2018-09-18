@@ -34,7 +34,7 @@ public class GameActivity extends AppCompatActivity {
         int boardSize = getIntent().getIntExtra(Game.BOARD_SIZE, Game.DEFAULT_BOARD_SIZE);
         createFragment();
         gameViewModel = ViewModelProviders.of(this).get(GameViewModel.class);
-        //TODO In theory you can update th board size from here
+        //TODO update player Name too
         gameViewModel.startSession(boardSize, getString(R.string.player1), getString(R.string.player2));
     }
 
