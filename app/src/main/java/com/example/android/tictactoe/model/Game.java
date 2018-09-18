@@ -5,6 +5,8 @@ import android.arch.lifecycle.MutableLiveData;
 public class Game {
     private static final String TAG = Game.class.getSimpleName();
     public static final int DEFAULT_BOARD_SIZE = 3;
+    public static final int BIGGER_BOARD_SIZE = 5;
+    public static final String BOARD_SIZE = "SIZE";
     public static final String PLAYER_ONE = "X";
     public static final String PLAYER_TWO = "O";
 
@@ -38,7 +40,8 @@ public class Game {
 
     public boolean gameEnded(int row, int column) {
 
-        if (checkRow(row, currentPlayer) || checkColumn(column, currentPlayer) || checkDiagonal(currentPlayer)) {
+        if (checkRow(row, currentPlayer) || checkColumn(column, currentPlayer) ||
+                checkDiagonalL(currentPlayer)|| checkDiagonalR(currentPlayer)) {
             winner.setValue(currentPlayer.getValue());
             return true;
         }
@@ -70,15 +73,22 @@ public class Game {
     }
 
     //check if it has the same value diagonally
-    public boolean checkDiagonal(Player player) {
+    public boolean checkDiagonalL(Player player) {
         for (int row = 0; row < boardSize; row++) {
             Cell cell = board[row][row];
-            Cell cell2 = board[row][boardSize-1-row];
-            if (cell == null || cell2 == null ||!cell.player.equals(player)||!cell2.player.equals(player)) return false;
+            if(cell == null || !cell.player.equals(player)) return false;
         }
         return true;
     }
 
+    //check if it has the same value diagonally
+    public boolean checkDiagonalR(Player player) {
+        for (int row = 0; row < boardSize; row++) {
+            Cell cell= board[row][boardSize-1-row];
+            if(cell == null || !cell.player.equals(player)) return false;
+        }
+        return true;
+    }
 
     public boolean isBoardFull() {
         for (Cell[] row : board)
