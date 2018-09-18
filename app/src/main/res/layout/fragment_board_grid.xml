@@ -1,16 +1,19 @@
 <?xml version="1.0" encoding="utf-8"?>
 <layout xmlns:android="http://schemas.android.com/apk/res/android">
-    <!--TODO Binding !!-->
+    <data>
+        <import type="android.view.View" />
+        <variable
+            name="viewModel"
+            type="com.example.android.tictactoe.viewModel.GameViewModel" />
+    </data>
     <GridView
         android:id="@+id/gridView"
         android:layout_width="match_parent"
         android:layout_height="match_parent"
-        android:layout_weight="9"
-        android:columnWidth="100dp"
+        android:columnWidth="70dp"
         android:gravity="center"
         android:horizontalSpacing="10dp"
-        android:numColumns="3"
+        android:numColumns="@{viewModel.boardSize}"
         android:stretchMode="spacingWidthUniform"
         android:verticalSpacing="24dp" />
-    <!--android:numColumns="@{}"-->
 </layout>

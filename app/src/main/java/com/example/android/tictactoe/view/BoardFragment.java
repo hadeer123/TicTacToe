@@ -1,6 +1,7 @@
 package com.example.android.tictactoe.view;
 
 import android.arch.lifecycle.ViewModelProviders;
+import android.databinding.DataBindingUtil;
 import android.os.Bundle;
 import android.support.annotation.Nullable;
 import android.support.v4.app.Fragment;
@@ -10,6 +11,7 @@ import android.view.ViewGroup;
 import android.widget.GridView;
 
 import com.example.android.tictactoe.R;
+import com.example.android.tictactoe.databinding.FragmentBoardGridBinding;
 import com.example.android.tictactoe.viewModel.GameViewModel;
 
 /**
@@ -18,6 +20,7 @@ import com.example.android.tictactoe.viewModel.GameViewModel;
  */
 public class BoardFragment extends Fragment {
     private GameViewModel viewModel;
+    private FragmentBoardGridBinding fragmentBoardGridBinding;
     private GridView gridView;
 
     public BoardFragment() {
@@ -40,16 +43,12 @@ public class BoardFragment extends Fragment {
     public View onCreateView(LayoutInflater inflater, ViewGroup container,
                              Bundle savedInstanceState) {
         // Inflate the layout for this fragment
-        View view = inflater.inflate(R.layout.fragment_board_grid, container, false);
+        fragmentBoardGridBinding = DataBindingUtil.inflate(inflater, R.layout.fragment_board_grid,container,false);
+        fragmentBoardGridBinding.setViewModel(viewModel);
+        View view = fragmentBoardGridBinding.getRoot();
         gridView = view.findViewById(R.id.gridView);
         return view;
     }
-//    private void forHardCodedView(LayoutInflater inflater){
-//        FragmentBoardGridBinding fragmentBoardGridBinding;
-//        fragmentBoardGridBinding = DataBindingUtil.inflate(inflater, R.layout.fragment_board_grid,container,false);
-//        fragmentBoardGridBinding.setGameViewModel(viewModel);
-//        view = fragmentBoardGridBinding.getRoot();
-//    }
 
     @Override
     public void onActivityCreated(@Nullable Bundle savedInstanceState) {

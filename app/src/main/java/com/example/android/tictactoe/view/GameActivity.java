@@ -1,7 +1,9 @@
 package com.example.android.tictactoe.view;
 
 import android.arch.lifecycle.ViewModelProviders;
+import android.content.DialogInterface;
 import android.os.Bundle;
+import android.support.v7.app.AlertDialog;
 import android.support.v7.app.AppCompatActivity;
 import android.support.v7.widget.Toolbar;
 import android.view.Menu;
@@ -21,16 +23,26 @@ public class GameActivity extends AppCompatActivity {
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.game_activity);
-        Toolbar toolbar = findViewById(R.id.toolbar);
-        setSupportActionBar(toolbar);
+        initToolBar();
+        initGame();
 
+        // observe winner
+        gameViewModel.getWinner().observeForever(winner -> startNewGame(winner));
+    }
 
+    private void initGame() {
+        int boardSize = getIntent().getIntExtra(Game.BOARD_SIZE, Game.DEFAULT_BOARD_SIZE);
         createFragment();
         gameViewModel = ViewModelProviders.of(this).get(GameViewModel.class);
-
         //TODO In theory you can update th board size from here
-        gameViewModel.startSession(Game.DEFAULT_BOARD_SIZE, "Player1", "Player2");
-        gameViewModel.getWinner().observeForever(winner -> startNewGame(winner));
+        gameViewModel.startSession(boardSize, getString(R.string.player1), getString(R.string.player2));
+    }
+
+    private void initToolBar() {
+        Toolbar toolbar = findViewById(R.id.toolbar);
+        setSupportActionBar(toolbar);
+        getSupportActionBar().setDisplayHomeAsUpEnabled(true);
+        getSupportActionBar().setDisplayShowHomeEnabled(true);
     }
 
     private void startNewGame(String winner) {
@@ -38,7 +50,6 @@ public class GameActivity extends AppCompatActivity {
         Toast.makeText(this, msg, Toast.LENGTH_LONG).show();
         resetFragment();
     }
-
 
     private void resetFragment() {
         createFragment();
@@ -48,6 +59,30 @@ public class GameActivity extends AppCompatActivity {
         boardFragment = BoardFragment.newInstance();
         getSupportFragmentManager().beginTransaction().
                 replace(R.id.boardContainer, boardFragment, BoardFragment.class.getSimpleName()).commit();
+    }
+
+    @Override
+    public boolean onSupportNavigateUp() {
+        //exit Game
+        alertUser();
+        return true;
+    }
+
+    private void alertUser() {
+        AlertDialog.Builder builder = new AlertDialog.Builder(this);
+        // Add the buttons
+        builder.setPositiveButton(R.string.ok, (dialog, id) -> {
+            // User clicked OK button
+            onBackPressed();
+        });
+        builder.setNegativeButton(R.string.cancel, (dialog, id) -> {
+            // User cancelled the dialog
+            dialog.cancel();
+        });
+        builder.setTitle(R.string.dlg_msg_title);
+        builder.setMessage(R.string.dlg_msg);
+        AlertDialog dialog = builder.create();
+        dialog.show();
     }
 
     @Override

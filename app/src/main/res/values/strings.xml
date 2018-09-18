@@ -8,4 +8,18 @@
     <string name="colon">:</string>
     <string name="total_drawstxt">Total Draws :</string>
     <string name="title_activity_game">GameActivity</string>
+    <string name="startGame">Button</string>
+    <string name="player_x">Player X</string>
+    <string name="player_o">Player O</string>
+    <string name="_3_x_3">3 X 3</string>
+    <string name="_5_x_5">5 X 5</string>
+    <string name="player_two">Player Two</string>
+    <string name="player_one">Player One</string>
+    <string name="pick_board_size">Pick Board Size</string>
+    <string name="player1">Player1</string>
+    <string name="player2">Player2</string>
+    <string name="ok">OK</string>
+    <string name="cancel">CANCEL</string>
+    <string name="dlg_msg_title">Exiting Game Session</string>
+    <string name="dlg_msg">Press OK to exit game and start a new one</string>
 </resources>
