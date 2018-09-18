@@ -7,4 +7,5 @@
     <string name="game_score">Game Score</string>
     <string name="colon">:</string>
     <string name="total_drawstxt">Total Draws :</string>
+    <string name="title_activity_game">GameActivity</string>
 </resources>
