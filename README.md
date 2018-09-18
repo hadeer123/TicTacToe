@@ -1,2 +1,2 @@
 # TicTacToe
-Simple Tic Tac Toe using Android Architecture Components (MVVM) mostely.
+Simple Tic Tac Toe using Android Architecture Components (MVVM) mostly.
