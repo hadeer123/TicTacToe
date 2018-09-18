@@ -73,7 +73,8 @@ public class Game {
     public boolean checkDiagonal(Player player) {
         for (int row = 0; row < boardSize; row++) {
             Cell cell = board[row][row];
-            if (cell == null ||!cell.player.equals(player)) return false;
+            Cell cell2 = board[row][boardSize-1-row];
+            if (cell == null || cell2 == null ||!cell.player.equals(player)||!cell2.player.equals(player)) return false;
         }
         return true;
     }
