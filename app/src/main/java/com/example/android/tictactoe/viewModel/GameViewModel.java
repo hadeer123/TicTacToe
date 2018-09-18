@@ -10,8 +10,6 @@ import com.example.android.tictactoe.model.Game;
 
 public class GameViewModel extends ViewModel {
 
-    // used for the hardcoded view
-    // public ObservableArrayMap<String, String> cells;
     public ObservableArrayMap<Integer, String> cells;
 
     // PlayerScores available all game
@@ -45,7 +43,6 @@ public class GameViewModel extends ViewModel {
     public void startGame(int boardSize, String playerOne, String playerTwo) {
         game = new Game(boardSize, playerOne, playerTwo);
         this.boardSize = boardSize;
-        // cells = new ObservableArrayMap<>();
         cells = new ObservableArrayMap<>();
         currentPlayer.set(game.currentPlayer.getValue());
     }
@@ -66,7 +63,6 @@ public class GameViewModel extends ViewModel {
         if (game.board[row][column] == null) {
             game.board[row][column] = new Cell(game.currentPlayer);
             cells.put(id, game.currentPlayer.getValue());
-            // cells.put(stringFromNumbers(row, column), game.currentPlayer.getValue());
             if (game.gameEnded(row, column)) {
                 updateScores();
                 restartGame();
